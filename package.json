@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "elm": "^0.18.0",
     "elm-webpack-loader": "^4.5.0",
     "vue": "^2.5.2",

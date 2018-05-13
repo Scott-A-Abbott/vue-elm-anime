@@ -2,7 +2,8 @@
 
 port module Main exposing (..)
 
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, button, div, text, br)
+import Html.Attributes exposing (class, id)
 import Html.Events exposing (onClick)
 
 
@@ -31,6 +32,7 @@ type Msg
     = Increment
     | Decrement
     | Multiply Int
+    | Divide Float
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -44,6 +46,9 @@ update msg model =
 
         Multiply val ->
             ( model * val, watchCounter (toString msg) )
+
+        Divide val ->
+            (round (toFloat model / val), watchCounter (toString msg) )
 
 
 port counter : (Int -> msg) -> Sub msg
@@ -65,6 +70,8 @@ view : Model -> Html Msg
 view model =
     div []
         [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (toString model) ]
+        , div [class "blue", id "counter"] [ text (toString model) ]
         , button [ onClick Increment ] [ text "+" ]
+        , br [] []
+        , button [onClick (Divide 10)] [text "divide by 10"]
         ]

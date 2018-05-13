@@ -2,15 +2,14 @@
   <div id="app">
     <img src="./assets/logo.png">
     <Counter  :ports="setupPorts"></Counter>
-
     <button @click="ports.counter.send(10)">Multiply by 10</button>
   </div>
 </template>
 
 <script>
 // import Hello from './components/Hello'
-
-import * as ElmComponent from './elm'
+import { animate } from './animate';
+import * as ElmComponent from './elm';
 
 export default {
   name: 'app',
@@ -24,6 +23,9 @@ export default {
       })
       this.ports = ports
     }
+  },
+  mounted() {
+    setTimeout(() => animate('#counter'), 100)
   }
 }
 </script>
@@ -36,4 +38,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
