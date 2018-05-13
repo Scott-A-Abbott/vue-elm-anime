@@ -68,9 +68,9 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [ id "counter" ]
         [ button [ onClick Decrement ] [ text "-" ]
-        , div [class "blue", id "counter"] [ text (toString model) ]
+        , div [class "blue"] [ text (toString model) ]
         , button [ onClick Increment ] [ text "+" ]
         , br [] []
         , button [onClick (Divide 10)] [text "divide by 10"]
